@@ -64,6 +64,7 @@
     <Compile Include="Forms\Main\TabPageEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Forms\Main\TreeNodeEx.cs" />
     <Compile Include="Forms\Main\TreeViewMenu.cs" />
     <Compile Include="Forms\Menu_01\Child01_01.cs">
       <SubType>Form</SubType>

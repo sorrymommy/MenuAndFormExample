@@ -26,17 +26,14 @@ namespace MenuAndFormExample.Forms.Main
             if (treeView == null)
                 return;
 
-            TreeNode node = treeView.SelectedNode;
-            UnitFormMenu menu = node.Tag as UnitFormMenu;
+            TreeNodeEx node = treeView.SelectedNode as TreeNodeEx;
 
-            if (menu == null)
-                return;
+            if (node.UnitFormMenu.FormType != null)
+            {
+                if (UnitFormExecutor != null)
+                    UnitFormExecutor.Run(node.UnitFormMenu);
+            }
 
-            if (menu.FormType == null)
-                return;
-
-            if (UnitFormExecutor != null)
-                UnitFormExecutor.Run(menu);
         }
         public void LoadTreeMenus(List<UnitFormMenu> unitFormMenus)
         {
@@ -44,8 +41,8 @@ namespace MenuAndFormExample.Forms.Main
 
             LoadUnitFormMenus(TreeView.Nodes, rootMenus);
 
-            foreach (TreeNode node in TreeView.Nodes)
-                LoadUnitFormMenus(node.Nodes, unitFormMenus.Where(x => x.Parent == (node.Tag as UnitFormMenu)).Select(x => x));
+            foreach (TreeNodeEx node in TreeView.Nodes)
+                LoadUnitFormMenus(node.Nodes, unitFormMenus.Where(x => x.Parent == node.UnitFormMenu).Select(x => x));
 
             TreeView.ExpandAll();
 
@@ -53,8 +50,7 @@ namespace MenuAndFormExample.Forms.Main
             {
                 foreach (UnitFormMenu menuItem in menus)
                 {
-                    TreeNode node = nodes.Add(menuItem.MenuName);
-                    node.Tag = menuItem;
+                    nodes.Add(new TreeNodeEx(menuItem));
                 }
             }
         }

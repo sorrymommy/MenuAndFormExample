@@ -1,4 +1,4 @@
-﻿using FormHandleExampe.Forms.Model;
+﻿using MenuAndFormExample.Forms.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FormHandleExampe.Forms.Main
+namespace MenuAndFormExample.Forms.Main
 {
     public class TreeNodeEx : TreeNode
     {
-        public TreeNodeEx(UnitFormMenu menu) : base(menu.MenuName)
+        public TreeNodeEx(UnitFormMenu unitFormMenu) : base(unitFormMenu.MenuName)
         {
-            this.Menu = menu;
+            this.UnitFormMenu = unitFormMenu;
         }
-        public UnitFormMenu Menu { get; private set; }
+        public UnitFormMenu UnitFormMenu { get; private set; }
     }
 }
