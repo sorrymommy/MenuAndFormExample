@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main.MenuView
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class TreeViewMenu : IUnitFormMenuLoader
     {

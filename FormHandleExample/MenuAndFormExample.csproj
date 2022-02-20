@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Base\UnitForm.cs">
+    <Compile Include="Lib\MenuAndForm\Base\UnitForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Base\UnitForm.Designer.cs">
+    <Compile Include="Lib\MenuAndForm\Base\UnitForm.Designer.cs">
       <DependentUpon>UnitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main\MainForm.cs">
@@ -58,16 +58,16 @@
     <Compile Include="Forms\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main\FormView\TabControlUIHandler.cs" />
-    <Compile Include="Forms\Main\FormView\TabControlUnitFormExecutor.cs" />
-    <Compile Include="Forms\Main\FormView\TabPageEx.cs">
+    <Compile Include="Lib\MenuAndForm\FormView\TabControlUIHandler.cs" />
+    <Compile Include="Lib\MenuAndForm\FormView\TabControlUnitFormExecutor.cs" />
+    <Compile Include="Lib\MenuAndForm\FormView\TabPageEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Main\MenuView\TreeNodeEx.cs" />
-    <Compile Include="Forms\Main\MenuView\TreeViewMenu.cs" />
-    <Compile Include="Forms\Main\RunningFormView\ToolStripStatusLabelRunningUnitFormMenuView.cs" />
-    <Compile Include="Forms\Main\RunningFormView\TreeViewUnitFormMenuView.cs" />
-    <Compile Include="Forms\Main\RunningFormView\RunningUnitFormMenuViewMonitor.cs" />
+    <Compile Include="Lib\MenuAndForm\MenuView\TreeNodeEx.cs" />
+    <Compile Include="Lib\MenuAndForm\MenuView\TreeViewMenu.cs" />
+    <Compile Include="Lib\MenuAndForm\RunningFormView\ToolStripStatusLabelRunningUnitFormMenuView.cs" />
+    <Compile Include="Lib\MenuAndForm\RunningFormView\TreeViewUnitFormMenuView.cs" />
+    <Compile Include="Lib\MenuAndForm\RunningFormView\RunningUnitFormMenuViewMonitor.cs" />
     <Compile Include="Forms\Menu_01\Child01_01.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,7 +92,7 @@
     <Compile Include="Forms\Menu_02\Child02_02.Designer.cs">
       <DependentUpon>Child02_02.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Model\UnitFormMenu.cs" />
+    <Compile Include="Lib\MenuAndForm\Model\UnitFormMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Main\MainForm.resx">

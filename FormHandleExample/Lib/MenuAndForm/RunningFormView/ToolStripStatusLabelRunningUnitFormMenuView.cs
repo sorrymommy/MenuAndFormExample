@@ -1,7 +1,7 @@
 ﻿using FormAndMenu;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main.RunningFormView
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class ToolStripStatusLabelRunningUnitFormMenuView : IRunningUnitFormMenuView
     {

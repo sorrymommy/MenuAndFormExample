@@ -1,7 +1,7 @@
 ﻿using FormAndMenu;
 using System.Collections.Generic;
 
-namespace MenuAndFormExample.Forms.Main.RunningFormView
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class RunningUnitFormMenuViewMonitor : IRunningUnitFormMenuViewMonitor
     {

@@ -1,7 +1,7 @@
 ﻿using FormAndMenu;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main.FormView
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class TabPageEx : TabPage
     {

@@ -1,7 +1,7 @@
 ﻿using FormAndMenu;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main.MenuView
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class TreeNodeEx : TreeNode
     {

@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main.FormView
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class TabControlUnitFormExecutor : IUnitFormExecutor
     {

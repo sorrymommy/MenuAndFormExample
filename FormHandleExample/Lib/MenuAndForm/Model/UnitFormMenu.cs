@@ -1,11 +1,7 @@
 ﻿using FormAndMenu;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MenuAndFormExample.Forms.Model
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class UnitFormMenu : IUnitFormMenu
     {

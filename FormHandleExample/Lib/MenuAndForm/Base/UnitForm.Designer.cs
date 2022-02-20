@@ -1,4 +1,4 @@
-﻿namespace MenuAndFormExample.Forms.Base
+﻿namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     partial class UnitForm
     {

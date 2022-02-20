@@ -1,8 +1,7 @@
 ﻿using FormAndMenu;
-using MenuAndFormExample.Forms.Main.MenuView;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main.RunningFormView
+namespace MenuAndFormExample.Lib.MenuAndForm.Base
 {
     public class TreeViewUnitFormMenuView : IRunningUnitFormMenuView
     {
