@@ -1,5 +1,5 @@
-﻿using MenuAndFormExample.Forms.Main.MenuView;
-using MenuAndFormExample.Lib.FormAndMenu;
+﻿using FormAndMenu;
+using MenuAndFormExample.Forms.Main.MenuView;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main.RunningFormView
@@ -12,7 +12,7 @@ namespace MenuAndFormExample.Forms.Main.RunningFormView
             this.TreeView = treeView;
         }
 
-        public void Refresh(UnitFormMenu menu)
+        public void Refresh(IUnitFormMenu menu)
         {
             TreeNode node = GetNode(TreeView.Nodes);
 

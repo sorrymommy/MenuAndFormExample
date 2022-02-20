@@ -1,9 +1,10 @@
-﻿using MenuAndFormExample.Forms.Main.FormView;
+﻿using FormAndMenu;
+using MenuAndFormExample.Forms.Main.FormView;
 using MenuAndFormExample.Forms.Main.MenuView;
 using MenuAndFormExample.Forms.Main.RunningFormView;
 using MenuAndFormExample.Forms.Menu_01;
 using MenuAndFormExample.Forms.Menu_02;
-using MenuAndFormExample.Lib.FormAndMenu;
+using MenuAndFormExample.Forms.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -20,9 +21,9 @@ namespace MenuAndFormExample.Forms.Main
 
         }
 
-        private List<UnitFormMenu> GetUnitFormMenus()
+        private List<IUnitFormMenu> GetUnitFormMenus()
         {
-            List<UnitFormMenu> unitFormMenus = new List<UnitFormMenu>();
+            List<IUnitFormMenu> unitFormMenus = new List<IUnitFormMenu>();
             unitFormMenus.Add(new UnitFormMenu() { Parent = null, MenuName = "SubMenu01", FormType = null });
             unitFormMenus.Add(new UnitFormMenu() { Parent = unitFormMenus[unitFormMenus.Count - 1], MenuName = nameof(Child01_01), FormType = Type.GetType(typeof(Child01_01).FullName) });
             unitFormMenus.Add(new UnitFormMenu() { Parent = unitFormMenus[unitFormMenus.Count - 2], MenuName = nameof(Child01_02), FormType = Type.GetType(typeof(Child01_02).FullName) });

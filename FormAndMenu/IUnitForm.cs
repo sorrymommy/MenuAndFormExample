@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Lib.FormAndMenu
+namespace FormAndMenu
 {
     public interface IUnitForm
     {
         Form Form { get; }
-        UnitFormMenu UnitFormMenu { get; set; }
+        IUnitFormMenu UnitFormMenu { get; set; }
     }
 }

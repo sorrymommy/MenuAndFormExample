@@ -1,4 +1,4 @@
-﻿using MenuAndFormExample.Lib.FormAndMenu;
+﻿using FormAndMenu;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main.FormView
@@ -9,7 +9,7 @@ namespace MenuAndFormExample.Forms.Main.FormView
         {
             this.UnitForm = unitForm;
 
-            Form form = unitForm.GetForm();
+            Form form = unitForm.Form;
             form.TopLevel = false;
             form.Parent = this;
 

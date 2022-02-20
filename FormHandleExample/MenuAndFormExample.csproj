@@ -52,11 +52,6 @@
     <Compile Include="Forms\Base\UnitForm.Designer.cs">
       <DependentUpon>UnitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lib\FormAndMenu\IRunningUnitFormMenuView.cs" />
-    <Compile Include="Lib\FormAndMenu\IRunningUnitFormMenuViewMonitor.cs" />
-    <Compile Include="Lib\FormAndMenu\IUnitForm.cs" />
-    <Compile Include="Lib\FormAndMenu\IUnitFormExecutor.cs" />
-    <Compile Include="Lib\FormAndMenu\IUnitFormMenuLoader.cs" />
     <Compile Include="Forms\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,7 +92,7 @@
     <Compile Include="Forms\Menu_02\Child02_02.Designer.cs">
       <DependentUpon>Child02_02.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lib\FormAndMenu\UnitFormMenu.cs" />
+    <Compile Include="Forms\Model\UnitFormMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Main\MainForm.resx">
@@ -138,6 +133,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FormAndMenu\FormAndMenu.csproj">
+      <Project>{90680cdb-fd56-4f5c-a8dc-8b789ec3cb3b}</Project>
+      <Name>FormAndMenu</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

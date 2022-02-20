@@ -1,4 +1,4 @@
-﻿using MenuAndFormExample.Lib.FormAndMenu;
+﻿using FormAndMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +33,7 @@ namespace MenuAndFormExample.Forms.Main.MenuView
             }
 
         }
-        public void Load(List<UnitFormMenu> unitFormMenus)
+        public void Load(List<IUnitFormMenu> unitFormMenus)
         {
             TreeView.Nodes.Clear();
 
@@ -46,9 +46,9 @@ namespace MenuAndFormExample.Forms.Main.MenuView
 
             TreeView.ExpandAll();
 
-            void LoadUnitFormMenus(TreeNodeCollection nodes, IEnumerable<UnitFormMenu> menus)
+            void LoadUnitFormMenus(TreeNodeCollection nodes, IEnumerable<IUnitFormMenu> menus)
             {
-                foreach (UnitFormMenu menuItem in menus)
+                foreach (IUnitFormMenu menuItem in menus)
                 {
                     nodes.Add(new TreeNodeEx(menuItem));
                 }

@@ -1,4 +1,4 @@
-﻿using MenuAndFormExample.Lib.FormAndMenu;
+﻿using FormAndMenu;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main.RunningFormView
@@ -10,7 +10,7 @@ namespace MenuAndFormExample.Forms.Main.RunningFormView
         {
             this.ToolStripStatusLabel = toolStripStatusLabel;
         }
-        public void Refresh(UnitFormMenu menu)
+        public void Refresh(IUnitFormMenu menu)
         {
             if (menu == null)
                 ToolStripStatusLabel.Text = string.Empty;

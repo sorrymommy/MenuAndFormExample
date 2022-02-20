@@ -1,10 +1,10 @@
-﻿namespace MenuAndFormExample.Lib.FormAndMenu
+﻿namespace FormAndMenu
 {
     public interface IRunningUnitFormMenuViewMonitor
     {
         void Subscribe(IRunningUnitFormMenuView unitFormMenuInfoView);
         void UnSubscribe(IRunningUnitFormMenuView unitFormMenuInfoView);
-        void Notify(UnitFormMenu menu);
+        void Notify(IUnitFormMenu menu);
         void Notify();
     }
 

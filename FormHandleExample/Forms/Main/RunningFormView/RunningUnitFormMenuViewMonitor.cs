@@ -1,4 +1,4 @@
-﻿using MenuAndFormExample.Lib.FormAndMenu;
+﻿using FormAndMenu;
 using System.Collections.Generic;
 
 namespace MenuAndFormExample.Forms.Main.RunningFormView
@@ -10,7 +10,7 @@ namespace MenuAndFormExample.Forms.Main.RunningFormView
         {
             views = new List<IRunningUnitFormMenuView>();
         }
-        public void Notify(UnitFormMenu menu)
+        public void Notify(IUnitFormMenu menu)
         {
             views.ForEach(view =>
             {
