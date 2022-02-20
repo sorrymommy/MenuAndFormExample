@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main
+namespace MenuAndFormExample.Forms.Main.MenuView
 {
-    public class TreeViewMenu
+    public class TreeViewMenu : IUnitFormMenuLoader
     {
         private TreeView TreeView;
         public TreeViewMenu(TreeView treeView)
@@ -35,8 +35,10 @@ namespace MenuAndFormExample.Forms.Main
             }
 
         }
-        public void LoadTreeMenus(List<UnitFormMenu> unitFormMenus)
+        public void Load(List<UnitFormMenu> unitFormMenus)
         {
+            TreeView.Nodes.Clear();
+
             var rootMenus = unitFormMenus.Where(x=>x.Parent == null).Select(x=>x);
 
             LoadUnitFormMenus(TreeView.Nodes, rootMenus);

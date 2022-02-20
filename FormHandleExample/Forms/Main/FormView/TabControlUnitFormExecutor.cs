@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main
+namespace MenuAndFormExample.Forms.Main.FormView
 {
     public class TabControlUnitFormExecutor:IUnitFormExecutor
     {
@@ -35,8 +35,7 @@ namespace MenuAndFormExample.Forms.Main
 
             TabControl.SelectedTab = tabPageEx;
 
-            //TODO : Refresh running form's information 
-            //RefreshRunningMenuInfo(form.UnitFormMenu);
+            RunningUnitFormMenuViewMonitor.Notify(tabPageEx.UnitForm.UnitFormMenu);
         }
         public int FormCreationLimtCount { get; set; }
         private TabPageEx GetTabPage(UnitFormMenu unitFormMenu)
@@ -53,5 +52,7 @@ namespace MenuAndFormExample.Forms.Main
                 .Where(tabPage => tabPage.UnitForm.UnitFormMenu == unitFormMenu)
                 .Count();
         }
+
+        public IRunningUnitFormMenuViewMonitor RunningUnitFormMenuViewMonitor { get; set; }
     }
 }

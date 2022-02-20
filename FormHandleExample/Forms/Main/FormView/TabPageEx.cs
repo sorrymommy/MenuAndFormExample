@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main
+namespace MenuAndFormExample.Forms.Main.FormView
 {
     public class TabPageEx: TabPage
     {

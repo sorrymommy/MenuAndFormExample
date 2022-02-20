@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Main\IRunningUnitFormMenuView.cs" />
+    <Compile Include="Forms\Main\IRunningUnitFormMenuViewMonitor.cs" />
     <Compile Include="Forms\Main\IUnitFormExecutor.cs" />
+    <Compile Include="Forms\Main\IUnitFormMenuLoader.cs" />
     <Compile Include="Forms\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,13 +62,16 @@
     <Compile Include="Forms\Base\UnitForm.Designer.cs">
       <DependentUpon>UnitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main\TabControlUIHandler.cs" />
-    <Compile Include="Forms\Main\TabControlUnitFormExecutor.cs" />
-    <Compile Include="Forms\Main\TabPageEx.cs">
+    <Compile Include="Forms\Main\FormView\TabControlUIHandler.cs" />
+    <Compile Include="Forms\Main\FormView\TabControlUnitFormExecutor.cs" />
+    <Compile Include="Forms\Main\FormView\TabPageEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Main\TreeNodeEx.cs" />
-    <Compile Include="Forms\Main\TreeViewMenu.cs" />
+    <Compile Include="Forms\Main\MenuView\TreeNodeEx.cs" />
+    <Compile Include="Forms\Main\MenuView\TreeViewMenu.cs" />
+    <Compile Include="Forms\Main\RunningFormView\ToolStripStatusLabelRunningUnitFormMenuView.cs" />
+    <Compile Include="Forms\Main\RunningFormView\TreeViewUnitFormMenuView.cs" />
+    <Compile Include="Forms\Main\RunningFormView\RunningUnitFormMenuViewMonitor.cs" />
     <Compile Include="Forms\Menu_01\Child01_01.cs">
       <SubType>Form</SubType>
     </Compile>

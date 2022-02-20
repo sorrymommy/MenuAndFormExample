@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuAndFormExample.Forms.Main
+namespace MenuAndFormExample.Forms.Main.FormView
 {
     public class TabControlUIHandler
     {
@@ -28,17 +28,6 @@ namespace MenuAndFormExample.Forms.Main
             TabControl.SelectedIndexChanged += Event_TabControlelectedIndexChanged;
 
         }
-        private UnitForm GetUnitFormFromActiveTabPage()
-        {
-            if (TabControl.SelectedTab == null)
-                return null;
-
-            if (TabControl.SelectedTab.HasChildren)
-                return TabControl.SelectedTab.Controls[0] as UnitForm;
-
-            return null;
-        }
-
         private void Event_TabControlelectedIndexChanged(object sender, EventArgs e)
         {
             TabControl tabControl = sender as TabControl;
@@ -46,13 +35,12 @@ namespace MenuAndFormExample.Forms.Main
             if (tabControl == null)
                 return;
 
-            UnitForm unitForm = GetUnitFormFromActiveTabPage();
+            TabPageEx tabPageEx = tabControl.SelectedTab as TabPageEx;
 
-            if (unitForm == null)
+            if (tabPageEx == null)
                 return;
 
-            //TODO : Refresh running form's information 
-            //RefreshRunningMenuInfo(unitForm.UnitFormMenu);
+            RunningUnitFormMenuViewMonitor.Notify(tabPageEx.UnitForm.UnitFormMenu);
         }
 
         private void Event_TabControlControlRemoved(object sender, ControlEventArgs e)
@@ -62,8 +50,7 @@ namespace MenuAndFormExample.Forms.Main
             if (tabControl == null)
                 return;
 
-            //TODO : Refresh running form's information 
-            //ClearRunningMenuInfo();
+            RunningUnitFormMenuViewMonitor.Notify(null);
         }
         private void Event_TabControlMouseClick(object sender, MouseEventArgs e)
         {
@@ -97,5 +84,6 @@ namespace MenuAndFormExample.Forms.Main
 
             e.DrawFocusRectangle();
         }
+        public IRunningUnitFormMenuViewMonitor RunningUnitFormMenuViewMonitor { get; set; }
     }
 }

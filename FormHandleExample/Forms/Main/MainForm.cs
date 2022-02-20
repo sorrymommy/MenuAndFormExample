@@ -1,4 +1,7 @@
 ﻿using MenuAndFormExample.Forms.Base;
+using MenuAndFormExample.Forms.Main.FormView;
+using MenuAndFormExample.Forms.Main.MenuView;
+using MenuAndFormExample.Forms.Main.RunningFormView;
 using MenuAndFormExample.Forms.Menu_01;
 using MenuAndFormExample.Forms.Menu_02;
 using MenuAndFormExample.Forms.Model;
@@ -23,7 +26,8 @@ namespace MenuAndFormExample.Forms.Main
             this.Load += Event_FormLoad;
 
         }
-        private void Event_FormLoad(object sender, EventArgs e)
+
+        private List<UnitFormMenu> GetUnitFormMenus()
         {
             List<UnitFormMenu> unitFormMenus = new List<UnitFormMenu>();
             unitFormMenus.Add(new UnitFormMenu() { Parent = null, MenuName = "SubMenu01", FormType = null });
@@ -33,45 +37,31 @@ namespace MenuAndFormExample.Forms.Main
             unitFormMenus.Add(new UnitFormMenu() { Parent = unitFormMenus[unitFormMenus.Count - 1], MenuName = nameof(Child02_01), FormType = Type.GetType(typeof(Child02_01).FullName) });
             unitFormMenus.Add(new UnitFormMenu() { Parent = unitFormMenus[unitFormMenus.Count - 2], MenuName = nameof(Child02_02), FormType = Type.GetType(typeof(Child02_02).FullName) });
 
-            TabControlUIHandler tabControlHandler = new TabControlUIHandler(tabControl1);
-            TabControlUnitFormExecutor tabControlUnitFormExecutor = new TabControlUnitFormExecutor(tabControl1);
-
-            TreeViewMenu treeViewMenu = new TreeViewMenu(treeView1);
-            treeViewMenu.LoadTreeMenus(unitFormMenus);
-            treeViewMenu.UnitFormExecutor = tabControlUnitFormExecutor;
-
+            return unitFormMenus;
         }
-        private void SelectMenu(UnitFormMenu unitFormMenu)
+        private void Event_FormLoad(object sender, EventArgs e)
         {
-            TreeNode node = GetNode(treeView1.Nodes);
 
-            treeView1.SelectedNode = node;
-            treeView1.Focus();
-            TreeNode GetNode(TreeNodeCollection nodes)
+            IRunningUnitFormMenuViewMonitor runningUnitFormMenuViewMonitor = new RunningUnitFormMenuViewMonitor();
+            runningUnitFormMenuViewMonitor.Subscribe(new ToolStripStatusLabelRunningUnitFormMenuView(toolStripStatusLabel1));
+            runningUnitFormMenuViewMonitor.Subscribe(new TreeViewUnitFormMenuView(treeView1));
+
+            IUnitFormExecutor unitFormExecutor = new TabControlUnitFormExecutor(tabControl1)
             {
-                foreach(TreeNode tn in nodes)
-                {
-                    if (tn.Nodes.Count > 0)
-                    {
-                        TreeNode tempNode = GetNode(tn.Nodes);
-                        if (tempNode != null)
-                            return tempNode;
-                    }
+                RunningUnitFormMenuViewMonitor = runningUnitFormMenuViewMonitor
+            };
 
-                    if (unitFormMenu == (tn.Tag as UnitFormMenu))
-                        return tn;
-                }
-                return null;
-            }
-        }
-        private void RefreshRunningMenuInfo(UnitFormMenu unitFormMenu)
-        {
-            toolStripStatusLabel1.Text = $"RunningMenu : {unitFormMenu.MenuName}[{unitFormMenu.FormType.Name}]";
-            SelectMenu(unitFormMenu);
-        }
-        private void ClearRunningMenuInfo()
-        {
-            toolStripStatusLabel1.Text = string.Empty;
+            new TabControlUIHandler(tabControl1)
+            {
+                RunningUnitFormMenuViewMonitor = runningUnitFormMenuViewMonitor
+            };
+
+            IUnitFormMenuLoader unitFormMenuLoader = new TreeViewMenu(treeView1)
+            {
+                UnitFormExecutor = unitFormExecutor
+            };
+
+            unitFormMenuLoader.Load(GetUnitFormMenus());
         }
     }
 }
