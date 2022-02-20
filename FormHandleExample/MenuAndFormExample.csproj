@@ -46,21 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Main\IRunningUnitFormMenuView.cs" />
-    <Compile Include="Forms\Main\IRunningUnitFormMenuViewMonitor.cs" />
-    <Compile Include="Forms\Main\IUnitFormExecutor.cs" />
-    <Compile Include="Forms\Main\IUnitFormMenuLoader.cs" />
-    <Compile Include="Forms\Main\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Main\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Base\UnitForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Base\UnitForm.Designer.cs">
       <DependentUpon>UnitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\FormAndMenu\IRunningUnitFormMenuView.cs" />
+    <Compile Include="Lib\FormAndMenu\IRunningUnitFormMenuViewMonitor.cs" />
+    <Compile Include="Lib\FormAndMenu\IUnitForm.cs" />
+    <Compile Include="Lib\FormAndMenu\IUnitFormExecutor.cs" />
+    <Compile Include="Lib\FormAndMenu\IUnitFormMenuLoader.cs" />
+    <Compile Include="Forms\Main\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main\FormView\TabControlUIHandler.cs" />
     <Compile Include="Forms\Main\FormView\TabControlUnitFormExecutor.cs" />
@@ -96,12 +97,9 @@
     <Compile Include="Forms\Menu_02\Child02_02.Designer.cs">
       <DependentUpon>Child02_02.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Model\UnitFormMenu.cs" />
+    <Compile Include="Lib\FormAndMenu\UnitFormMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Base\UnitForm.resx">
-      <DependentUpon>UnitForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

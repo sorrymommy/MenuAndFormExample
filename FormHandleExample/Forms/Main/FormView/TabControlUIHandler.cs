@@ -1,11 +1,6 @@
-﻿using MenuAndFormExample.Forms.Base;
-using MenuAndFormExample.Forms.Model;
+﻿using MenuAndFormExample.Lib.FormAndMenu;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main.FormView
@@ -22,9 +17,9 @@ namespace MenuAndFormExample.Forms.Main.FormView
             TabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
             TabControl.SizeMode = TabSizeMode.Fixed;
 
-            TabControl.DrawItem             += Event_TabControlDrawItem;
-            TabControl.MouseClick           += Event_TabControlMouseClick;
-            TabControl.ControlRemoved       += Event_TabControlControlRemoved;
+            TabControl.DrawItem += Event_TabControlDrawItem;
+            TabControl.MouseClick += Event_TabControlMouseClick;
+            TabControl.ControlRemoved += Event_TabControlControlRemoved;
             TabControl.SelectedIndexChanged += Event_TabControlelectedIndexChanged;
 
         }

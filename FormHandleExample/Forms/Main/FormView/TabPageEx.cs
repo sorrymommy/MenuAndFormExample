@@ -1,27 +1,23 @@
-﻿using MenuAndFormExample.Forms.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MenuAndFormExample.Lib.FormAndMenu;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main.FormView
 {
-    public class TabPageEx: TabPage
+    public class TabPageEx : TabPage
     {
-        public TabPageEx(UnitForm unitForm   )
+        public TabPageEx(IUnitForm unitForm)
         {
             this.UnitForm = unitForm;
 
-            UnitForm.TopLevel  = false;
-            UnitForm.Parent    = this;
+            Form form = unitForm.GetForm();
+            form.TopLevel = false;
+            form.Parent = this;
 
-            UnitForm.FormBorderStyle = FormBorderStyle.None;
-            UnitForm.Dock            = DockStyle.Fill;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
 
-            UnitForm.Show();
+            form.Show();
         }
-        public UnitForm UnitForm{ get; private set; }
+        public IUnitForm UnitForm { get; private set; }
     }
 }

@@ -1,9 +1,4 @@
-﻿using MenuAndFormExample.Forms.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MenuAndFormExample.Lib.FormAndMenu;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main.RunningFormView

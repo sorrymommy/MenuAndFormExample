@@ -1,15 +1,11 @@
-﻿using MenuAndFormExample.Forms.Base;
-using MenuAndFormExample.Forms.Model;
+﻿using MenuAndFormExample.Lib.FormAndMenu;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main.FormView
 {
-    public class TabControlUnitFormExecutor:IUnitFormExecutor
+    public class TabControlUnitFormExecutor : IUnitFormExecutor
     {
         private TabControl TabControl;
         public TabControlUnitFormExecutor(TabControl tabControl)
@@ -24,7 +20,7 @@ namespace MenuAndFormExample.Forms.Main.FormView
             if ((FormCreationLimtCount == 0) || (GetCreatedCount(unitFormMenu) < FormCreationLimtCount))
             {
                 tabPageEx = GetTabPage(unitFormMenu);
-                UnitForm unitForm = Activator.CreateInstance(unitFormMenu.FormType) as UnitForm;
+                IUnitForm unitForm = Activator.CreateInstance(unitFormMenu.FormType) as IUnitForm;
                 unitForm.UnitFormMenu = unitFormMenu;
 
                 tabPageEx = new TabPageEx(unitForm);

@@ -1,11 +1,4 @@
-﻿using MenuAndFormExample.Forms.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 
 namespace MenuAndFormExample.Forms.Menu_02
 {
@@ -14,11 +7,6 @@ namespace MenuAndFormExample.Forms.Menu_02
         public Child02_02()
         {
             InitializeComponent();
-        }
-        private void LoadMenu()
-        {
-            List<UnitFormMenu> unitFormMenus = new List<UnitFormMenu>();
-            unitFormMenus.Add(new UnitFormMenu());
         }
     }
 }

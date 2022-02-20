@@ -1,13 +1,9 @@
-﻿using MenuAndFormExample.Forms.Model;
-using System;
+﻿using MenuAndFormExample.Lib.FormAndMenu;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MenuAndFormExample.Forms.Main.RunningFormView
 {
-    public class RunningUnitFormMenuViewMonitor:IRunningUnitFormMenuViewMonitor
+    public class RunningUnitFormMenuViewMonitor : IRunningUnitFormMenuViewMonitor
     {
         private List<IRunningUnitFormMenuView> views;
         public RunningUnitFormMenuViewMonitor()

@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // UnitForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 589);
-            this.Name = "UnitForm";
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "UnitForm";
-            this.ResumeLayout(false);
-
         }
 
         #endregion

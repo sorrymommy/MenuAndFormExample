@@ -1,18 +1,11 @@
-﻿using MenuAndFormExample.Forms.Base;
-using MenuAndFormExample.Forms.Main.FormView;
+﻿using MenuAndFormExample.Forms.Main.FormView;
 using MenuAndFormExample.Forms.Main.MenuView;
 using MenuAndFormExample.Forms.Main.RunningFormView;
 using MenuAndFormExample.Forms.Menu_01;
 using MenuAndFormExample.Forms.Menu_02;
-using MenuAndFormExample.Forms.Model;
+using MenuAndFormExample.Lib.FormAndMenu;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main

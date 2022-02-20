@@ -1,4 +1,4 @@
-﻿using MenuAndFormExample.Forms.Model;
+﻿using MenuAndFormExample.Lib.FormAndMenu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,13 +11,19 @@ using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Base
 {
-    public partial class UnitForm : Form
+    public partial class UnitForm : Form, IUnitForm
     {
         public UnitForm()
         {
             InitializeComponent();
         }
-
         public UnitFormMenu UnitFormMenu { get; set; }
+        public Form Form
+        {
+            get
+            {
+                return this;
+            }
+        }
     }
 }
