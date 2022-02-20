@@ -1,4 +1,4 @@
-﻿using FormHandleExampe.Forms.Model;
+﻿using MenuAndFormExample.Forms.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,18 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FormHandleExampe.Forms.Main
+namespace MenuAndFormExample.Forms.Main
 {
     public class TreeViewMenu
     {
-        private TreeView treeView;
+        private TreeView TreeView;
         public TreeViewMenu(TreeView treeView)
         {
-            this.treeView = treeView;
+            TreeView = treeView;
 
-            this.treeView.DoubleClick += Event_TreeViewDoubleClick;
+            TreeView.ExpandAll();
+            TreeView.FullRowSelect = true;
 
-            this.treeView.FullRowSelect = true;
+            TreeView.DoubleClick += Event_TreeViewDoubleClick;
         }
         private void Event_TreeViewDoubleClick(object sender, EventArgs e)
         {
@@ -35,31 +36,27 @@ namespace FormHandleExampe.Forms.Main
             if (menu.FormType == null)
                 return;
 
-            UnitFormCreator.Run(menu);
+            if (UnitFormExecutor != null)
+                UnitFormExecutor.Run(menu);
         }
-
-        public void LoadMenu(IEnumerable<UnitFormMenu> unitFormMenus)
+        public void LoadTreeMenus(List<UnitFormMenu> unitFormMenus)
         {
             var rootMenus = unitFormMenus.Where(x=>x.Parent == null).Select(x=>x);
 
-            LoadUnitFormMenus(treeView.Nodes, rootMenus);
+            LoadUnitFormMenus(TreeView.Nodes, rootMenus);
 
-            foreach (TreeNodeEx node in treeView.Nodes)
-                LoadUnitFormMenus(node.Nodes, unitFormMenus.Where(x => x.Parent == node.Menu).Select(x => x));
+            foreach (TreeNode node in TreeView.Nodes)
+                LoadUnitFormMenus(node.Nodes, unitFormMenus.Where(x => x.Parent == (node.Tag as UnitFormMenu)).Select(x => x));
 
             void LoadUnitFormMenus(TreeNodeCollection nodes, IEnumerable<UnitFormMenu> menus)
             {
                 foreach (UnitFormMenu menuItem in menus)
                 {
-                    nodes.Add(new TreeNodeEx(menuItem));
+                    TreeNode node = nodes.Add(menuItem.MenuName);
+                    node.Tag = menuItem;
                 }
             }
-
-            this.treeView.ExpandAll();
-
         }
-
-        public IUnitFormCreator UnitFormCreator { get; set; }
-
+        public IUnitFormExecutor UnitFormExecutor { get; set; }
     }
 }

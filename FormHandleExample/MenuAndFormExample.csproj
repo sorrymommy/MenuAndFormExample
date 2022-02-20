@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Main\IUnitFormExecutor.cs" />
     <Compile Include="Forms\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +60,7 @@
       <DependentUpon>UnitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main\TabControlHandler.cs" />
+    <Compile Include="Forms\Main\TreeViewMenu.cs" />
     <Compile Include="Forms\Menu_01\Child01_01.cs">
       <SubType>Form</SubType>
     </Compile>

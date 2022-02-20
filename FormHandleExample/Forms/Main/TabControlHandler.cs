@@ -1,4 +1,5 @@
 ﻿using MenuAndFormExample.Forms.Base;
+using MenuAndFormExample.Forms.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,22 +10,24 @@ using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main
 {
-    public class TabControlHandler
+    public class TabControlHandler: IUnitFormExecutor
     {
         private TabControl TabControl;
         public TabControlHandler(TabControl tabControl)
         {
             TabControl = tabControl;
 
+            TabControl.TabPages.Clear();
+
             TabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
             TabControl.SizeMode = TabSizeMode.Fixed;
-            TabControl.TabPages.Clear();
 
             TabControl.DrawItem             += Event_TabControlDrawItem;
             TabControl.MouseClick           += Event_TabControlMouseClick;
             TabControl.ControlRemoved       += Event_TabControlControlRemoved;
             TabControl.SelectedIndexChanged += Event_TabControlelectedIndexChanged;
 
+            FormCreationLimtCount = 1;
         }
         private UnitForm GetUnitFormFromActiveTabPage()
         {
@@ -96,5 +99,55 @@ namespace MenuAndFormExample.Forms.Main
             e.DrawFocusRectangle();
         }
 
+        private TabPage GetTabPage(UnitFormMenu unitFormMenu)
+        {
+            return TabControl.TabPages
+                .Cast<TabPage>()
+                .Where(tabPage => tabPage.HasChildren && (tabPage.Controls[0] as UnitForm).UnitFormMenu == unitFormMenu)
+                .LastOrDefault();
+        }
+        private int GetCreatedCount(UnitFormMenu unitFormMenu)
+        {
+            return TabControl.TabPages
+                .Cast<TabPage>()
+                .Where(tabPage => tabPage.HasChildren && (tabPage.Controls[0] as UnitForm).UnitFormMenu == unitFormMenu)
+                .Count();
+        }
+
+        private int FormCreationLimtCount { get; set; }
+        public void Run(UnitFormMenu unitFormMenu)
+        {
+            TabPage tabPage = GetTabPage(unitFormMenu);
+            UnitForm unitForm = null;
+            if ((FormCreationLimtCount == 0) || (GetCreatedCount(unitFormMenu) < FormCreationLimtCount))
+            {
+                tabPage = GetTabPage(unitFormMenu);
+                unitForm = Activator.CreateInstance(unitFormMenu.FormType) as UnitForm;
+                tabPage = new TabPage();
+
+                tabPage.Text = unitFormMenu.MenuName;
+                unitForm.UnitFormMenu = unitFormMenu;
+                unitForm.TopLevel = false;
+                unitForm.Parent = tabPage;
+                unitForm.FormBorderStyle = FormBorderStyle.None;
+                unitForm.Dock = DockStyle.Fill;
+                unitForm.Show();
+
+                TabControl.TabPages.Add(tabPage);
+            }
+
+            TabControl.SelectedTab = tabPage;
+
+            if (TabControl.TabPages.Count == 1)
+            {
+                var form = GetUnitFormFromActiveTabPage();
+
+                if (form != null)
+                {
+                    //TODO : Refresh running form's information 
+                    //RefreshRunningMenuInfo(form.UnitFormMenu);
+                }
+            }
+        }
     }
 }
