@@ -15,7 +15,6 @@ namespace MenuAndFormExample.Forms.Main
         {
             TreeView = treeView;
 
-            TreeView.ExpandAll();
             TreeView.FullRowSelect = true;
 
             TreeView.DoubleClick += Event_TreeViewDoubleClick;
@@ -47,6 +46,8 @@ namespace MenuAndFormExample.Forms.Main
 
             foreach (TreeNode node in TreeView.Nodes)
                 LoadUnitFormMenus(node.Nodes, unitFormMenus.Where(x => x.Parent == (node.Tag as UnitFormMenu)).Select(x => x));
+
+            TreeView.ExpandAll();
 
             void LoadUnitFormMenus(TreeNodeCollection nodes, IEnumerable<UnitFormMenu> menus)
             {

@@ -59,7 +59,11 @@
     <Compile Include="Forms\Base\UnitForm.Designer.cs">
       <DependentUpon>UnitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main\TabControlHandler.cs" />
+    <Compile Include="Forms\Main\TabControlUIHandler.cs" />
+    <Compile Include="Forms\Main\TabControlUnitFormExecutor.cs" />
+    <Compile Include="Forms\Main\TabPageEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\Main\TreeViewMenu.cs" />
     <Compile Include="Forms\Menu_01\Child01_01.cs">
       <SubType>Form</SubType>

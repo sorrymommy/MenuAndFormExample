@@ -33,10 +33,12 @@ namespace MenuAndFormExample.Forms.Main
             unitFormMenus.Add(new UnitFormMenu() { Parent = unitFormMenus[unitFormMenus.Count - 1], MenuName = nameof(Child02_01), FormType = Type.GetType(typeof(Child02_01).FullName) });
             unitFormMenus.Add(new UnitFormMenu() { Parent = unitFormMenus[unitFormMenus.Count - 2], MenuName = nameof(Child02_02), FormType = Type.GetType(typeof(Child02_02).FullName) });
 
-            TabControlHandler tabControlHandler = new TabControlHandler(tabControl1);
+            TabControlUIHandler tabControlHandler = new TabControlUIHandler(tabControl1);
+            TabControlUnitFormExecutor tabControlUnitFormExecutor = new TabControlUnitFormExecutor(tabControl1);
+
             TreeViewMenu treeViewMenu = new TreeViewMenu(treeView1);
             treeViewMenu.LoadTreeMenus(unitFormMenus);
-            treeViewMenu.UnitFormExecutor = tabControlHandler;
+            treeViewMenu.UnitFormExecutor = tabControlUnitFormExecutor;
 
         }
         private void SelectMenu(UnitFormMenu unitFormMenu)

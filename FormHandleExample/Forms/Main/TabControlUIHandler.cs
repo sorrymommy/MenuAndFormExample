@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace MenuAndFormExample.Forms.Main
 {
-    public class TabControlHandler: IUnitFormExecutor
+    public class TabControlUIHandler
     {
         private TabControl TabControl;
-        public TabControlHandler(TabControl tabControl)
+        public TabControlUIHandler(TabControl tabControl)
         {
             TabControl = tabControl;
 
@@ -27,7 +27,6 @@ namespace MenuAndFormExample.Forms.Main
             TabControl.ControlRemoved       += Event_TabControlControlRemoved;
             TabControl.SelectedIndexChanged += Event_TabControlelectedIndexChanged;
 
-            FormCreationLimtCount = 1;
         }
         private UnitForm GetUnitFormFromActiveTabPage()
         {
@@ -97,57 +96,6 @@ namespace MenuAndFormExample.Forms.Main
             e.Graphics.DrawString(tabTitle, e.Font, Brushes.Black, tabTitleStringPoint);
 
             e.DrawFocusRectangle();
-        }
-
-        private TabPage GetTabPage(UnitFormMenu unitFormMenu)
-        {
-            return TabControl.TabPages
-                .Cast<TabPage>()
-                .Where(tabPage => tabPage.HasChildren && (tabPage.Controls[0] as UnitForm).UnitFormMenu == unitFormMenu)
-                .LastOrDefault();
-        }
-        private int GetCreatedCount(UnitFormMenu unitFormMenu)
-        {
-            return TabControl.TabPages
-                .Cast<TabPage>()
-                .Where(tabPage => tabPage.HasChildren && (tabPage.Controls[0] as UnitForm).UnitFormMenu == unitFormMenu)
-                .Count();
-        }
-
-        private int FormCreationLimtCount { get; set; }
-        public void Run(UnitFormMenu unitFormMenu)
-        {
-            TabPage tabPage = GetTabPage(unitFormMenu);
-            UnitForm unitForm = null;
-            if ((FormCreationLimtCount == 0) || (GetCreatedCount(unitFormMenu) < FormCreationLimtCount))
-            {
-                tabPage = GetTabPage(unitFormMenu);
-                unitForm = Activator.CreateInstance(unitFormMenu.FormType) as UnitForm;
-                tabPage = new TabPage();
-
-                tabPage.Text = unitFormMenu.MenuName;
-                unitForm.UnitFormMenu = unitFormMenu;
-                unitForm.TopLevel = false;
-                unitForm.Parent = tabPage;
-                unitForm.FormBorderStyle = FormBorderStyle.None;
-                unitForm.Dock = DockStyle.Fill;
-                unitForm.Show();
-
-                TabControl.TabPages.Add(tabPage);
-            }
-
-            TabControl.SelectedTab = tabPage;
-
-            if (TabControl.TabPages.Count == 1)
-            {
-                var form = GetUnitFormFromActiveTabPage();
-
-                if (form != null)
-                {
-                    //TODO : Refresh running form's information 
-                    //RefreshRunningMenuInfo(form.UnitFormMenu);
-                }
-            }
         }
     }
 }
