@@ -24,11 +24,6 @@ namespace MenuAndFormExample.Forms.Main
 
             treeView1.DoubleClick += Event_TreeViewDoubleClick;
 
-            tabControl1.DrawItem += Event_TabControlDrawItem;
-            tabControl1.MouseClick += Event_TabControlMouseClick;
-            tabControl1.ControlRemoved += Event_TabControlControlRemoved;
-            tabControl1.SelectedIndexChanged += Event_TabControlelectedIndexChanged;
-            
         }
         private UnitForm GetUnitFormFromActiveTabPage()
         {
@@ -39,30 +34,6 @@ namespace MenuAndFormExample.Forms.Main
                 return tabControl1.SelectedTab.Controls[0] as UnitForm;
 
             return null;
-        }
-        private void Event_TabControlelectedIndexChanged(object sender, EventArgs e)
-        {
-            TabControl tabControl = sender as TabControl;
-
-            if (tabControl == null)
-                return;
-
-            UnitForm unitForm = GetUnitFormFromActiveTabPage();
-
-            if (unitForm == null)
-                return;
-
-            RefreshRunningMenuInfo(unitForm.UnitFormMenu);
-        }
-
-        private void Event_TabControlControlRemoved(object sender, ControlEventArgs e)
-        {
-            TabControl tabControl = sender as TabControl;
-
-            if (tabControl == null)
-                return;
-
-            ClearRunningMenuInfo();
         }
         private int FormCreationLimtCount {get;set;}
 
@@ -79,47 +50,11 @@ namespace MenuAndFormExample.Forms.Main
             LoadTreeMenus(unitFormMenus);
             treeView1.ExpandAll();
 
-            tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-            tabControl1.SizeMode = TabSizeMode.Fixed;
-            tabControl1.TabPages.Clear();
+            TabControlHandler tabControlHandler = new TabControlHandler(tabControl1);
 
             FormCreationLimtCount = 1;
             treeView1.FullRowSelect = true;
         }
-
-        private void Event_TabControlMouseClick(object sender, MouseEventArgs e)
-        {
-            TabControl tabControl = sender as TabControl;
-
-            Point closeLoc = new Point(15, 5);
-
-            Rectangle r = tabControl.GetTabRect(tabControl.SelectedIndex);
-            Rectangle closeButtonRect = new Rectangle(r.Right - closeLoc.X, r.Top + closeLoc.Y, 10, 12);
-
-            if (closeButtonRect.Contains(e.Location))
-                tabControl.TabPages.Remove(tabControl.SelectedTab);
-        }
-
-        private void Event_TabControlDrawItem(object sender, DrawItemEventArgs e)
-        {
-            TabControl tabControl = sender as TabControl;
-
-            TabPage thisTab = tabControl.TabPages[e.Index];
-            string tabTitle = thisTab.Text;
-
-            Point closeBottonPoint = new Point(15, 5);
-            Rectangle closeBoxRect = new Rectangle(e.Bounds.Right - closeBottonPoint.X, e.Bounds.Top + closeBottonPoint.Y, 10, 12);
-            Point closeBoxStringXPoint = new Point(e.Bounds.Right - (closeBottonPoint.X), e.Bounds.Top + closeBottonPoint.Y - 2);
-            Point tabTitleStringPoint = new Point(e.Bounds.Left, e.Bounds.Top + 6);
-
-            e.Graphics.DrawRectangle(Pens.Black  ,closeBoxRect);
-            e.Graphics.FillRectangle(Brushes.Red ,closeBoxRect);
-            e.Graphics.DrawString("x", e.Font, Brushes.Black, closeBoxStringXPoint);
-            e.Graphics.DrawString(tabTitle, e.Font, Brushes.Black, tabTitleStringPoint);
-
-            e.DrawFocusRectangle();
-        }
-
         private TabPage GetTabPage(UnitFormMenu unitFormMenu)
         {
             return tabControl1.TabPages
